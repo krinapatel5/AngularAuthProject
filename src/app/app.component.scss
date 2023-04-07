@@ -1,0 +1,17 @@
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.content {
+  padding: 32px;
+}
+
+.profile-image-toolbar {
+  border-radius: 100%;
+  margin-right: 8px;
+}
+.button-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

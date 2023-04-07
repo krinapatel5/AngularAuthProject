@@ -1,0 +1,699 @@
+<div class="add-company-wrapper">
+  <mat-card>
+    <form
+      class="form-container mat-elevation-z8"
+      #myForm="ngForm"
+      [formGroup]="formData"
+    >
+      <mat-card-header>
+        <mat-card-title>Company Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="company-info-container">
+          <div class="row">
+            <div class="col-sm-3">
+              <mat-form-field class="full-width">
+                <mat-label>Company Name</mat-label>
+                <input
+                  type="text"
+                  formControlName="companyName"
+                  matInput
+                  placeholder="Google"
+                />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('companyName')?.touched &&
+                    formData.get('companyName')?.errors &&
+                    formData.get('companyName')?.hasError('required')
+                  "
+                >
+                  Company Name is required
+                </mat-error>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('companyName')?.touched &&
+                    formData.get('companyName')?.errors &&
+                    formData.get('companyName')?.hasError('maxlength')
+                  "
+                >
+                  Company Name can be max 50 characters long
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field class="full-width">
+                <mat-label>Address</mat-label>
+                <input
+                  type="text"
+                  formControlName="address"
+                  matInput
+                  placeholder="San Francisco"
+                />
+                <!-- <mat-error class="error" *ngIf="formData.get('address')?.touched && formData.get('address')?.errors && formData.get('address')?.hasError('required')">
+                  Company Address is Required
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  matInput
+                  placeholder="help@google.com"
+                />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('email')?.touched &&
+                    formData.get('email')?.errors &&
+                    formData.get('email')?.hasError('required')
+                  "
+                >
+                  Email is required
+                </mat-error>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('email')?.touched &&
+                    formData.get('email')?.errors &&
+                    formData.get('email')?.hasError('maxlength')
+                  "
+                >
+                  Email can be max 100 characters long
+                </mat-error>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('email')?.touched &&
+                    formData.get('email')?.errors &&
+                    formData.get('email')?.hasError('email')
+                  "
+                >
+                  Please enter a valid email
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field class="full-width">
+                <mat-label>Phone</mat-label>
+                <input
+                  type="number"
+                  formControlName="phone"
+                  matInput
+                  placeholder="XXXXXXXXXX"
+                />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    formData.get('phone')?.touched &&
+                    formData.get('phone')?.errors &&
+                    formData.get('phone')?.hasError('required')
+                  "
+                >
+                  Phone is required
+                </mat-error>
+                <mat-error
+                class="error"
+                *ngIf="
+                  formData.get('phone')?.touched &&
+                  formData.get('phone')?.errors &&
+                  formData.get('phone')?.hasError('pattern')
+                "
+              >
+                Please enter a valid phone number
+              </mat-error>
+                <mat-icon matSuffix>phone</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3 top-padding">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Created At</mat-label>
+                <input
+                  formControlName="createdAt"
+                  matInput
+                  [matDatepicker]="picker"
+                  placeholder="mm/dd/yyyy"
+                  readonly
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="true"></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="employee-info-container" formArrayName="empInfo">
+              <mat-card-header>
+            <div class="row" style="display: flex; flex-direction: row;">
+              <!-- <div> -->
+                <mat-card-title>Employee Details</mat-card-title>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  style="margin: 0 0 0.5rem 0.5rem;"
+                  (click)="addEmployee()"
+                >
+                  Add Employee
+                </button>
+                </div>
+              </mat-card-header>
+            <div
+              *ngFor="
+                let employee of employeesInfo().controls;
+                let empIndex = index
+              "
+            >
+              <div [formGroupName]="empIndex">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <mat-form-field class="full-width">
+                      <mat-label>Employee Name</mat-label>
+                      <input
+                        type="text"
+                        formControlName="empName"
+                        matInput
+                        placeholder="Sundar Pichai"
+                      />
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empName')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empName')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empName')
+                            ?.hasError('required')
+                        "
+                      >
+                        Name is required
+                      </mat-error>
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empName')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empName')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empName')
+                            ?.hasError('maxlength')
+                        "
+                      >
+                        Name can be max 25 characters long
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-form-field
+                      class="full-width"
+                      [color]="colorControl.value!"
+                    >
+                      <mat-label>Designation</mat-label>
+                      <mat-select formControlName="designation" required>
+                        <!-- <mat-option>None</mat-option> -->
+                        <mat-option
+                          *ngFor="let designation of designationArr"
+                          [value]="designation"
+                        >
+                          {{ designation }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-sm-3 top-padding">
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Joining Date</mat-label>
+                      <input
+                        formControlName="joiningDate"
+                        matInput
+                        [matDatepicker]="picker"
+                        [max]="maxDate"
+                        placeholder="Choose a date"
+                      />
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('joiningDate')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('joiningDate')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('joiningDate')
+                            ?.hasError('required')
+                        "
+                      >
+                        Joining date is required
+                      </mat-error>
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="picker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <mat-form-field class="full-width">
+                      <mat-label>Email</mat-label>
+                      <input
+                        type="email"
+                        formControlName="empEmail"
+                        matInput
+                        placeholder="sundar.p@gmail.com"
+                      />
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empEmail')
+                            ?.hasError('required')
+                        "
+                      >
+                        Email is required
+                      </mat-error>
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empEmail')
+                            ?.hasError('maxlength')
+                        "
+                      >
+                        Email can be max 100 characters long
+                      </mat-error>
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empEmail')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empEmail')
+                            ?.hasError('email')
+                        "
+                      >
+                        Please enter a valid email
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-3">
+                    <mat-form-field class="full-width">
+                      <mat-label>Phone</mat-label>
+                      <input
+                        type="number"
+                        formControlName="empPhone"
+                        matInput
+                        placeholder="Enter a phone number"
+                      />
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empPhone')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empPhone')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empPhone')
+                            ?.hasError('required')
+                        "
+                      >
+                        Phone is required
+                      </mat-error>
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                          employeesInfo().controls[empIndex].get('empPhone')
+                            ?.touched &&
+                          employeesInfo().controls[empIndex].get('empPhone')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empPhone')
+                            ?.hasError('pattern')
+                        "
+                      >
+                      Please enter a valid phone number
+                      </mat-error>
+                      <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="skill-info-container" formArrayName="skillInfo">
+                  <mat-card-header>
+                    <mat-card-title>Skill Details</mat-card-title>
+                  </mat-card-header>
+                  <div
+                    *ngFor="
+                      let skill of employeeSkills(empIndex).controls;
+                      let skillIndex = index
+                    "
+                  >
+                    <div [formGroupName]="skillIndex">
+                      <div class="row skillset">
+                        <div class="col-sm-3">
+                          <mat-form-field class="full-width">
+                            <mat-label>Skills</mat-label>
+                            <mat-select formControlName="skillName" required>
+                              <!-- <mat-option>None</mat-option> -->
+                              <mat-option
+                                *ngFor="let skill of skillArr"
+                                [value]="skill"
+                              >
+                                {{ skill }}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillName')?.touched &&
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillName')?.errors &&
+                                employeeSkills(empIndex)
+                                  .controls[skillIndex].get('skillName')
+                                  ?.hasError('required')
+                              "
+                            >
+                              Skill is required
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field class="full-width">
+                            <mat-label>Rating</mat-label>
+                            <input
+                              type="number"
+                              formControlName="skillRating"
+                              matInput
+                              placeholder=""
+                              maxlength="1"
+                            />
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.touched &&
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.errors &&
+                                employeeSkills(empIndex)
+                                  .controls[skillIndex].get('skillRating')
+                                  ?.hasError('required')
+                              "
+                            >
+                              Rating is required
+                            </mat-error>
+
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.touched &&
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.errors &&
+                                employeeSkills(empIndex)
+                                  .controls[skillIndex].get('skillRating')
+                                  ?.hasError('min')
+                              "
+                            >
+                              Rating must be between 1 to 5
+                            </mat-error>
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.touched &&
+                                employeeSkills(empIndex).controls[
+                                  skillIndex
+                                ].get('skillRating')?.errors &&
+                                employeeSkills(empIndex)
+                                  .controls[skillIndex].get('skillRating')
+                                  ?.hasError('max')
+                              "
+                            >
+                              Rating must be between 1 to 5
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      mat-raised-button
+                      color="warn"
+                      (click)="removeEmployeeSkill(empIndex, skillIndex)"
+                    >
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example remove icon"
+                        fontIcon="remove"
+                        >remove</mat-icon
+                      >
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="add-button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="addEmployeeSkill(empIndex)"
+                >
+                  <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    fontIcon="add"
+                  ></mat-icon>
+                </button>
+
+                <div
+                  class="education-info-container"
+                  formArrayName="educationInfo"
+                >
+                  <mat-card-header>
+                    <mat-card-title>Education Details</mat-card-title>
+                  </mat-card-header>
+                  <div
+                    *ngFor="
+                      let edu of employeeeEducation(empIndex).controls;
+                      let eduIndex = index
+                    "
+                  >
+                    <div [formGroupName]="eduIndex">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <mat-form-field class="full-width">
+                            <mat-label>Institute Name</mat-label>
+                            <input
+                              type="text"
+                              formControlName="instituteName"
+                              matInput
+                              placeholder="Ex. Haward University"
+                            />
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('instituteName')?.touched &&
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('instituteName')?.errors &&
+                                employeeeEducation(empIndex)
+                                  .controls[eduIndex].get('instituteName')
+                                  ?.hasError('required')
+                              "
+                            >
+                              Institute name is required
+                            </mat-error>
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('instituteName')?.touched &&
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('instituteName')?.errors &&
+                                employeeeEducation(empIndex)
+                                  .controls[eduIndex].get('instituteName')
+                                  ?.hasError('maxlength')
+                              "
+                            >
+                              Institute name can be max 50 characters long
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field class="full-width">
+                            <mat-label>Course</mat-label>
+                            <input
+                              type="text"
+                              formControlName="course"
+                              matInput
+                              placeholder=""
+                            />
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('course')?.touched &&
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('course')?.errors &&
+                                employeeeEducation(empIndex)
+                                  .controls[eduIndex].get('course')
+                                  ?.hasError('required')
+                              "
+                            >
+                              Course name is required
+                            </mat-error>
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('course')?.touched &&
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('course')?.errors &&
+                                employeeeEducation(empIndex)
+                                  .controls[eduIndex].get('course')
+                                  ?.hasError('maxlength')
+                              "
+                            >
+                              Course name can be max 25 characters long
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3 top-padding">
+                          <mat-form-field class="full-width" appearance="fill">
+                            <mat-label>Graduated At</mat-label>
+                            <input
+                              formControlName="graduationYear"
+                              matInput
+                              [matDatepicker]="pickerr"
+                            />
+                            <mat-error
+                              class="error"
+                              *ngIf="
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('graduationYear')?.touched &&
+                                employeeeEducation(empIndex).controls[
+                                  eduIndex
+                                ].get('graduationYear')?.errors &&
+                                employeeeEducation(empIndex)
+                                  .controls[eduIndex].get('graduationYear')
+                                  ?.hasError('required')
+                              "
+                            >
+                              Gratuation date is required
+                            </mat-error>
+                            <mat-datepicker-toggle
+                              matSuffix
+                              [for]="pickerr"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker
+                              #pickerr
+                              startView="year"
+                            ></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      mat-raised-button
+                      color="warn"
+                      style="margin-bottom: 1rem"
+                      (click)="removeEmployeeEdu(empIndex, eduIndex)"
+                    >
+                      <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example remove icon"
+                        fontIcon="remove"
+                        >remove</mat-icon
+                      >
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="add-button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="addEmployeeEdu(empIndex)"
+                >
+                  <mat-icon
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    fontIcon="add"
+                  ></mat-icon>
+                </button>
+              </div>
+              <button
+                mat-raised-button
+                color="warn"
+                style="margin-top: 1rem; margin-bottom: 1rem"
+                (click)="removeEmployee(empIndex)"
+              >
+                Remove Employee
+                <!-- Remove Employee {{ empIndex + 1 }} -->
+              </button>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row" style="margin-bottom: 1rem">
+          <button
+            mat-raised-button
+            color="accent"
+            type="button"
+            [disabled]="!formData.valid"
+            (click)="
+              openSnackBar(message, action);
+              onSubmit();
+              myForm.resetForm();
+            "
+          >
+            Submit
+          </button>
+          &nbsp; &nbsp; &nbsp;
+          <button *ngIf="formSubmit"
+            mat-raised-button
+            style="margin-top: 0.5rem;"
+            color="warn"
+            type="button"
+            (click)="onFormCancel()"
+          >
+            Cancel
+          </button>
+        </div>
+      </mat-card-content>
+      <!-- <div mat-dialog-actions>
+        <button mat-button  [mat-dialog-close]="true" cdkFocusInitial>Yes,Update</button>
+      </div> -->
+    </form>
+  </mat-card>
+</div>
