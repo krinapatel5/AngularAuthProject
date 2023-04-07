@@ -25,7 +25,8 @@
                   *ngIf="
                     formData.get('companyName')?.touched &&
                     formData.get('companyName')?.errors &&
-                    formData.get('companyName')?.hasError('required')
+                    formData.get('companyName')?.hasError('required') ||
+                    formData.get('companyName')?.hasError('whitespace')
                   "
                 >
                   Company Name is required
@@ -70,7 +71,8 @@
                   *ngIf="
                     formData.get('email')?.touched &&
                     formData.get('email')?.errors &&
-                    formData.get('email')?.hasError('required')
+                    formData.get('email')?.hasError('required') ||
+                    formData.get('email')?.hasError('whitespace')
                   "
                 >
                   Email is required
@@ -111,7 +113,8 @@
                   *ngIf="
                     formData.get('phone')?.touched &&
                     formData.get('phone')?.errors &&
-                    formData.get('phone')?.hasError('required')
+                    formData.get('phone')?.hasError('required') ||
+                    formData.get('phone')?.hasError('whitespace')
                   "
                 >
                   Phone is required
@@ -189,7 +192,10 @@
                             ?.errors &&
                           employeesInfo()
                             .controls[empIndex].get('empName')
-                            ?.hasError('required')
+                            ?.hasError('required') ||
+                          employeesInfo()
+                          .controls[empIndex].get('empName')
+                          ?.hasError('whitespace')
                         "
                       >
                         Name is required
@@ -247,7 +253,10 @@
                             ?.errors &&
                           employeesInfo()
                             .controls[empIndex].get('joiningDate')
-                            ?.hasError('required')
+                            ?.hasError('required') ||
+                          employeesInfo()
+                          .controls[empIndex].get('joiningDate')
+                          ?.hasError('whitespace')
                         "
                       >
                         Joining date is required
@@ -278,7 +287,10 @@
                             ?.errors &&
                           employeesInfo()
                             .controls[empIndex].get('empEmail')
-                            ?.hasError('required')
+                            ?.hasError('required') ||
+                          employeesInfo()
+                          .controls[empIndex].get('empEmail')
+                          ?.hasError('whitespace')
                         "
                       >
                         Email is required
@@ -331,7 +343,10 @@
                             ?.errors &&
                           employeesInfo()
                             .controls[empIndex].get('empPhone')
-                            ?.hasError('required')
+                            ?.hasError('required') ||
+                          employeesInfo()
+                          .controls[empIndex].get('empPhone')
+                          ?.hasError('whitespace')
                         "
                       >
                         Phone is required
@@ -390,7 +405,10 @@
                                 ].get('skillName')?.errors &&
                                 employeeSkills(empIndex)
                                   .controls[skillIndex].get('skillName')
-                                  ?.hasError('required')
+                                  ?.hasError('required') ||
+                                employeeSkills(empIndex)
+                                .controls[skillIndex].get('skillName')
+                                ?.hasError('whitespace')
                               "
                             >
                               Skill is required
@@ -418,7 +436,10 @@
                                 ].get('skillRating')?.errors &&
                                 employeeSkills(empIndex)
                                   .controls[skillIndex].get('skillRating')
-                                  ?.hasError('required')
+                                  ?.hasError('required') ||
+                                employeeSkills(empIndex)
+                                .controls[skillIndex].get('skillRating')
+                                ?.hasError('whitespace')
                               "
                             >
                               Rating is required
@@ -522,7 +543,10 @@
                                 ].get('instituteName')?.errors &&
                                 employeeeEducation(empIndex)
                                   .controls[eduIndex].get('instituteName')
-                                  ?.hasError('required')
+                                  ?.hasError('required') ||
+                                employeeeEducation(empIndex)
+                                .controls[eduIndex].get('instituteName')
+                                ?.hasError('whitespace')
                               "
                             >
                               Institute name is required
@@ -565,7 +589,10 @@
                                 ].get('course')?.errors &&
                                 employeeeEducation(empIndex)
                                   .controls[eduIndex].get('course')
-                                  ?.hasError('required')
+                                  ?.hasError('required') ||
+                                employeeeEducation(empIndex)
+                                .controls[eduIndex].get('course')
+                                ?.hasError('whitespace')
                               "
                             >
                               Course name is required
@@ -607,7 +634,10 @@
                                 ].get('graduationYear')?.errors &&
                                 employeeeEducation(empIndex)
                                   .controls[eduIndex].get('graduationYear')
-                                  ?.hasError('required')
+                                  ?.hasError('required') ||
+                                employeeeEducation(empIndex)
+                                .controls[eduIndex].get('graduationYear')
+                                ?.hasError('whitespace')
                               "
                             >
                               Gratuation date is required

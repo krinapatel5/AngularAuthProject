@@ -1,19 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 // @use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; font-family: 'Poppins', sans-serif; }
+body { margin: 0; }
+*{
+  font-family: 'Poppins', sans-serif;
+}
 
 .form-container{
+  width: 600px;
   display: block;
-  margin: auto;
-  background-color: #eceff1;
+  margin: 15px auto;
   padding: 48px;
   border-radius: 16px;
 }
 
 .form-container mat-form-field{
   width: 100%;
+}
+.form-container h1{
+  text-align: center;
 }
 
 .center{

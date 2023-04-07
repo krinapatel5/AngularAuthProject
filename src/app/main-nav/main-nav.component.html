@@ -22,7 +22,7 @@
     <mat-icon>expand_more</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu">
-      <button mat-button mat-men-item routerLink="/profile">Profile</button>
+      <button mat-button mat-men-item><a routerLink="/profile" class="profile-link">Profile</a></button>
       <br/>
       <button mat-button mat-men-item (click)="logout()">Logout</button>
     </mat-menu>

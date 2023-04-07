@@ -33,12 +33,14 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddCompanyComponent } from './add-company/add-company.component';
 
 import { HomeModule } from './components/home/home.module';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LandingComponent } from './landing/landing.component';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 // import { SharedModule } from './shared/shared/shared.module';
 
@@ -67,6 +69,7 @@ import { LandingComponent } from './landing/landing.component';
     MaterialModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
     AngularFireStorageModule,
     HttpClientModule,
@@ -81,9 +84,10 @@ import { LandingComponent } from './landing/landing.component';
     MatSidenavModule,
     MatListModule,
     MatSnackBarModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

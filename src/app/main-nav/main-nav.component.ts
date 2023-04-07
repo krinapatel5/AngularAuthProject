@@ -32,7 +32,6 @@ export class MainNavComponent {
 
       ngOnInit(): void {
         this.isLoggedIn$ = this.authService.isLoggedIn();
-
       }
       logout(){
         this.authService.logout().subscribe(()=>{

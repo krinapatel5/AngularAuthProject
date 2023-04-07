@@ -114,6 +114,12 @@ export class AddCompanyComponent implements OnInit {
   empEduInfo: any = [];
   formSubmit = false;
 
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -129,6 +135,7 @@ export class AddCompanyComponent implements OnInit {
       companyName: new FormControl('', [
         Validators.required,
         Validators.maxLength(50),
+        this.noWhitespaceValidator
       ]),
       address: new FormControl(''),
       email: new FormControl('', [

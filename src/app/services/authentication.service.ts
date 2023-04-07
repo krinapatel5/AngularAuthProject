@@ -30,10 +30,10 @@ export class AuthenticationService {
 
   updateProfile(profileData: Partial<UserInfo>): Observable<any>{
     const user = this.auth.currentUser;
+    console.log(user);
     return of(user).pipe(
       concatMap(user => {
         if(!user){ throw new Error("Not Authenticated"); }
-
         return updateProfile(user, profileData)
       })
     )
