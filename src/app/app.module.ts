@@ -11,7 +11,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { ProfileComponent } from './components/profile/profile.component';
-import { LandingComponent } from './components/landing/landing.component';
+
 
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -38,6 +38,7 @@ import { AddCompanyComponent } from './add-company/add-company.component';
 import { HomeModule } from './components/home/home.module';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
+import { LandingComponent } from './landing/landing.component';
 
 // import { SharedModule } from './shared/shared/shared.module';
 
@@ -49,10 +50,11 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
     SignUpComponent,
     MainNavComponent,
     ProfileComponent,
-    LandingComponent,
+
     AddCompanyComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
+    LandingComponent,
 
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
+// import { DataService } from './services/data.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent {
   constructor(
     public authService: AuthenticationService,
     private router: Router,
+    // private dataService: DataService
     ){}
 
 

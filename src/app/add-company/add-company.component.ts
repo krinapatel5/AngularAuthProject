@@ -32,6 +32,8 @@ import {
 import { ModalService } from '../services/modal.service';
 import { Router } from '@angular/router';
 // const moment = _rollupMoment || _moment;
+import { DataService } from '../services/data.service';
+
 
 export const MY_FORMATS = {
   parse: {
@@ -48,7 +50,7 @@ export const MY_FORMATS = {
 @Component({
   selector: 'app-add-company',
   templateUrl: './add-company.component.html',
-  styleUrls: ['./add-company.component.css'],
+  styleUrls: ['./add-company.component.scss'],
   template: 'passed in {{ editCompanyDetails }}',
   providers: [
     {
@@ -120,6 +122,7 @@ export class AddCompanyComponent implements OnInit {
     public dialogRef: MatDialogRef<AddCompanyComponent>,
     private modalservice: ModalService,
     private router: Router,
+    private dataService: DataService,
     @Optional() @Inject(MAT_DIALOG_DATA) public editCompanyDetails: any
   ) {
     this.formData = this.fb.group({
