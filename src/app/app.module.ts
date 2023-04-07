@@ -18,6 +18,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
 import { LayoutModule } from "@angular/cdk/layout";
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -34,13 +35,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AddCompanyComponent } from './add-company/add-company.component';
+import { AddCompanyComponent } from './add-company/new-company.component';
 
 import { HomeModule } from './components/home/home.module';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LandingComponent } from './landing/landing.component';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 // import { SharedModule } from './shared/shared/shared.module';
 
@@ -57,6 +61,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     LoginLayoutComponent,
     HomeLayoutComponent,
     LandingComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
 
   ],
   imports: [
@@ -67,6 +73,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
@@ -85,7 +92,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     MatListModule,
     MatSnackBarModule,
     MatMomentDateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent],

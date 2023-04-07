@@ -68,6 +68,7 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('name');
   }
 
+
   submit() {
     if(!this.signUpForm.valid) return;
 

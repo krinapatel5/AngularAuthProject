@@ -6,7 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddCompanyComponent } from './add-company/add-company.component';
+import { AddCompanyComponent } from './add-company/new-company.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, ...canActivate(redirectToLogin)},
   {path: 'new-company', component: AddCompanyComponent, ...canActivate(redirectToLogin)},
   {path: 'company-list', component: HomeComponent, ...canActivate(redirectToLogin)},
+  {path: 'verify-email', component: VerifyEmailComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
 ];
 
 @NgModule({

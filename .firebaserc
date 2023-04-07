@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-sign-up-28c11": {
+      "hosting": {
+        "project": [
+          "angular-sign-up-28c11"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-sign-up-28c11"
+  }
+}

@@ -29,7 +29,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/shared/dialog/delete-dialog/delete-dialog.component';
 import { ModalService } from '../../services/modal.service';
 import { Subscription, take } from 'rxjs';
-import { AddCompanyComponent } from 'src/app/add-company/add-company.component';
+import { AddCompanyComponent } from 'src/app/add-company/new-company.component';
 
 export interface UserData {
   id: string;

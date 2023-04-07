@@ -38,6 +38,21 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  login(){
+    if(this.email == ''){
+      alert('Please enter email address');
+      return;
+    }
+    if(this.password == ''){
+      alert('Please enter email address');
+      return;
+    }
+    this.authService.login(this.email, this.password);
+  }
+  signInWithGoogle(){
+    this.authService.signInWithGoogle();
+  }
+
   submit() {
     const { email, password } = this.loginForm.value;
 

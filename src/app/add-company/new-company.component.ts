@@ -48,9 +48,9 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-add-company',
-  templateUrl: './add-company.component.html',
-  styleUrls: ['./add-company.component.scss'],
+  selector: 'new-add-company',
+  templateUrl: './new-company.component.html',
+  styleUrls: ['./new-company.component.scss'],
   template: 'passed in {{ editCompanyDetails }}',
   providers: [
     {

@@ -17,8 +17,12 @@
       </mat-error>
     </mat-form-field>
     <div class="center margin-top">
-      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+    </div>
+    <div class="center margin-top">
+      <button mat-raised-button color="primary" (click)="signInWithGoogle()"><mat-icon>public</mat-icon>Sign with the Google</button>
     </div>
     <span class="center margin-top">New to our platform ? <a class="sign-up-link" routerLink="/sign-up">Sign Up!</a></span>
+    <span class="center margin-top"> <a routerLink="/forgot-password" class="forgot-password" style="text-decoration: none;">Forgot Password? </a></span>
   </form>
   </div>
