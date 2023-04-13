@@ -30,6 +30,7 @@ import { DeleteDialogComponent } from 'src/app/shared/dialog/delete-dialog/delet
 import { ModalService } from '../../services/modal.service';
 import { Subscription, take } from 'rxjs';
 import { AddCompanyComponent } from 'src/app/add-company/new-company.component';
+import { EditCompanyComponent } from 'src/app/edit-company/edit-company.component';
 
 export interface UserData {
   id: string;
@@ -102,7 +103,7 @@ export class HomeComponent implements AfterViewInit, MaterialModule, OnDestroy {
   }
 
   openCompanyFormDialog() {
-    this.dialog.open(AddCompanyComponent, {
+    this.dialog.open(EditCompanyComponent, {
       width: '50vw',
       height: '90vh',
     });
@@ -125,10 +126,10 @@ export class HomeComponent implements AfterViewInit, MaterialModule, OnDestroy {
   }
 
   editCompanyDetails(row: any, index: any) {
-    this.dialog.open(AddCompanyComponent, {
+    this.dialog.open(EditCompanyComponent, {
       data: row,
-      width: '75%',
-      height: '90vh',
+      width: '800px',
+      height: '800px',
     });
     this.modalservice
       .getModalClose()

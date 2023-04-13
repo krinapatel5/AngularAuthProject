@@ -169,10 +169,12 @@
                 <button
                   mat-raised-button
                   color="primary"
-                  style="margin: 0 0 0.5rem 0.5rem;"
+                  style="margin: 0 0 0.5rem 0.5rem; border-radius: 50%;"
                   (click)="addEmployee()"
+                  matTooltip="Add employee"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
                 >
-                  Add Employee
+                  <mat-icon> add </mat-icon>
                 </button>
                 </div>
               </mat-card-header>

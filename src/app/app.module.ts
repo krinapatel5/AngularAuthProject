@@ -45,6 +45,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { EditCompanyComponent } from './edit-company/edit-company.component';
 
 // import { SharedModule } from './shared/shared/shared.module';
 
@@ -63,6 +64,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     LandingComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    EditCompanyComponent,
 
   ],
   imports: [
