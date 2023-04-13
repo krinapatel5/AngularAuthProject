@@ -103,7 +103,7 @@
               <mat-form-field class="full-width">
                 <mat-label>Phone</mat-label>
                 <input
-                  type="number"
+                  type="tel"
                   formControlName="phone"
                   matInput
                   placeholder="XXXXXXXXXX"
@@ -128,6 +128,16 @@
                 "
               >
                 Please enter a valid phone number
+              </mat-error>
+              <mat-error
+                class="error"
+                *ngIf="
+                  formData.get('phone')?.touched &&
+                  formData.get('phone')?.errors &&
+                  formData.get('phone')?.errors?.['maxlength']
+                "
+              >
+                Please enter 10 digit phone number
               </mat-error>
                 <mat-icon matSuffix>phone</mat-icon>
               </mat-form-field>
@@ -329,7 +339,7 @@
                     <mat-form-field class="full-width">
                       <mat-label>Phone</mat-label>
                       <input
-                        type="number"
+                        type="tel"
                         formControlName="empPhone"
                         matInput
                         placeholder="Enter a phone number"
@@ -354,7 +364,7 @@
                       <mat-error
                         class="error"
                         *ngIf="
-                          employeesInfo().controls[empIndex].get('empPhone')
+                        employeesInfo().controls[empIndex].get('empPhone')
                             ?.touched &&
                           employeesInfo().controls[empIndex].get('empPhone')
                             ?.errors &&
@@ -364,6 +374,18 @@
                         "
                       >
                       Please enter a valid phone number
+                      </mat-error>
+                      <mat-error
+                        class="error"
+                        *ngIf="
+                        employeesInfo().controls[empIndex].get('empPhone')
+                            ?.errors &&
+                          employeesInfo()
+                            .controls[empIndex].get('empPhone')
+                            ?.hasError('maxLength')
+                        "
+                      >
+                      Please enter 10 digit phone number
                       </mat-error>
                       <mat-icon matSuffix>phone</mat-icon>
                     </mat-form-field>

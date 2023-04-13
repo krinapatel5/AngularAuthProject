@@ -13,7 +13,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class MainNavComponent {
   isLoggedIn$!: Observable<boolean>;
-  // showToolbar: boolean = true;
+  showToolbar: boolean = false;
   // @Input() showToolbar: boolean = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -32,6 +32,7 @@ export class MainNavComponent {
 
       ngOnInit(): void {
         this.isLoggedIn$ = this.authService.isLoggedIn();
+        this.showToolbar = !!this.isLoggedIn$;
       }
       logout(){
         this.authService.logout().subscribe(()=>{

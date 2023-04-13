@@ -14,6 +14,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
   private loginFormSubmitAttempt: boolean = false;
+  isLoggedIn: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
@@ -71,5 +72,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       });
       this.loginFormSubmitAttempt = true;
+      this.isLoggedIn = true;
   }
 }

@@ -32,6 +32,7 @@ import {
 import { ModalService } from '../services/modal.service';
 import { Router } from '@angular/router';
 // const moment = _rollupMoment || _moment;
+import { HotToastService } from '@ngneat/hot-toast';
 import { DataService } from '../services/data.service';
 
 
@@ -128,6 +129,7 @@ export class AddCompanyComponent implements OnInit {
     public dialogRef: MatDialogRef<AddCompanyComponent>,
     private modalservice: ModalService,
     private router: Router,
+    private toast: HotToastService,
     private dataService: DataService,
     @Optional() @Inject(MAT_DIALOG_DATA) public editCompanyDetails: any
   ) {
@@ -146,8 +148,8 @@ export class AddCompanyComponent implements OnInit {
       phone: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(15),
-        Validators.pattern('[1-9][0-9]{9,14}'),
+        Validators.maxLength(10),
+        // Validators.pattern('[1-9][0-9]'),
       ]),
       createdAt: new FormControl(new Date()),
       empInfo: new FormArray([]),
@@ -228,7 +230,7 @@ export class AddCompanyComponent implements OnInit {
             empPhone: new FormControl('', [
               Validators.required,
               Validators.minLength(10),
-              Validators.maxLength(15),
+              Validators.maxLength(10),
               Validators.pattern('[1-9][0-9]{9,14}'),
             ]),
             skillInfo: new FormArray([...this.skillInfoGroup(index)]),
@@ -255,7 +257,7 @@ export class AddCompanyComponent implements OnInit {
           empPhone: new FormControl('', [
             Validators.required,
             Validators.minLength(10),
-            Validators.maxLength(15),
+            Validators.maxLength(10),
             Validators.pattern('[1-9][0-9]{9,14}'),
           ]),
           skillInfo: new FormArray([...this.skillInfoGroup()]),

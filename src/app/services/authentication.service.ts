@@ -13,6 +13,7 @@ export class AuthenticationService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   isLoggedIn() {
+    console.log(!!this.loggedIn.asObservable());
     return this.loggedIn.asObservable();
   }
 

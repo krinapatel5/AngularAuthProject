@@ -10,7 +10,7 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  isLoggedIn: boolean = false;
 
   title = 'firebaseAuth';
   constructor(
@@ -18,6 +18,12 @@ export class AppComponent {
     private router: Router,
     // private dataService: DataService
     ){}
+
+    ngOnInit(): void {
+      this.authService.isLoggedIn().subscribe(() =>{
+        this.isLoggedIn = true;
+      })
+    }
 
 
   logout(){
